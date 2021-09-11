@@ -1,0 +1,37 @@
+const API_ENDPOINT = 'https://api.litekart.in/graphql'
+  const query = `mutation OrderRefund(
+  $oid: ID!
+  $itemId: ID!
+  $amount: Float!
+  $note: String!
+  $email: String!
+  $password: String!
+) {
+  OrderRefund(
+    oid: $oid
+    itemId: $itemId
+    amount: $amount
+    note: $note
+    email: $email
+    password: $password
+  ) {
+    id
+  }
+}`
+  const variables = {
+    oid: '60b449d5b1c323595ec549b0',
+    itemId: '60af735e5cfd77001873b249',
+    amount: 870,
+    note: 'Out of Stock',
+    email: 'nishanth.ravi@pearldatadirect.com',
+    password: 'pdd',
+  }
+  try {
+    const r = await axios.post(API_ENDPOINT, {
+      query,
+      variables,
+    })
+    console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzz', r.data)
+  } catch (e) {
+    console.log('ERR::: ', e.toString())
+  }

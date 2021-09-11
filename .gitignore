@@ -1,0 +1,11 @@
+
+node_modules
+*.log
+dist
+.env
+.env1
+.env2
+data
+prod
+release
+firebase-adminsdk.json

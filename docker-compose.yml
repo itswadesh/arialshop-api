@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  api:
+    build: ./
+    image: itswadesh/litekart
+    container_name: litekart-api
+    restart: unless-stopped
+    ports:
+      - '7000:7000'
+    volumes:
+      - ./../litekart-assets/:/usr/litekart-assets
+    networks:
+      - litekart
+    environment:
+      - NODE_ENV=production
+      - PORT=7000
+      - DB_USERNAME
+      - DB_PASSWORD
+      - DB_HOST=db
+      - DB_NAME=${MONGO_INITDB_DATABASE}
+      - FACEBOOK_APP_ID=${FACEBOOK_APP_ID}
+      - MONGO_DATABASE=${MONGO_DATABASE}
+      - MONGO_HOST=${MONGO_HOST}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - S3_ACCESS_KEY=${S3_ACCESS_KEY}
+      - S3_BUCKET_NAME=${S3_BUCKET_NAME}
+      - S3_SECRET=${S3_SECRET}
+      - SESS_SECRET
+      - REDIS_HOST=cache
+      - REDIS_PASSWORD
+    depends_on:
+      - cache
+
+  cache:
+    image: redis:alpine
+    container_name: litekart-cache
+    ports:
+      - '6379:6379'
+    networks:
+      - litekart
+    command: ['--requirepass "secret"']
+
+  nginx:
+    restart: unless-stopped
+    image: staticfloat/nginx-certbot
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+    networks:
+      - litekart
+    environment:
+      CERTBOT_EMAIL: owner@company.com
+      # variable names are space-separated
+      ENVSUBST_VARS: FQDN
+      FQDN: fapi.litekart.in
+    volumes:
+      - ./conf.d:/etc/nginx/user.conf.d:ro
+      - letsencrypt:/etc/letsencrypt
+volumes:
+  letsencrypt:
+  # litekart-assets:
+networks:
+  litekart:

@@ -1,0 +1,13 @@
+curl -H 'User-Agent: Apache-HttpClient/4.5.9 (Java/1.8.0_151)' -H 'appkey: b927bb152344be5f5445d6a9ffc10c23' -H 'CurTime: 1608110108512' -H 'MD5: 00ca5dd4ca7c996c19977f9cb8c4cc89' -H 'CheckSum: 324f95c26d26a6632391f56e60a8abc50fbda981 -X POST -d '{x:10}' -i https://tapi.litekart.in/api/netease-receive
+
+
+###
+POST http://localhost:7000/auth/google/onetap
+content-type: application/json
+
+{
+"clientId": "clientId",
+"credential": "token
+"select_by": "user"
+
+}

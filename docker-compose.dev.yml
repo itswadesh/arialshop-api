@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  # api:
+  #   build: 
+  #     context: ./
+  #     dockerfile: Dockerfile-dev
+  #   image: itswadesh/litekart-dev
+  #   container_name: litekart-dev
+  #   ports:
+  #     - '7000:7000'
+  #   volumes:
+  #      - ./:/usr/app
+  #      - ./../litekart-assets/:/usr/litekart-assets
+  #   environment:
+  #     - NODE_ENV=development
+  #     - PORT=7000
+  #     - REDIS_HOST=litekart-cache
+  #   networks:
+  #     - litekart
+  #   depends_on:
+  #     - cache
+  #   command:
+  #     sh -c 'yarn install && yarn dev'
+      
+  cache:
+    image: redis:alpine
+    container_name: litekart-cache
+    ports:
+      - '6379:6379'
+    networks:
+      - litekart
+    command: ['--requirepass "secret"']
+# volumes:
+#     tmp:
+networks:
+  litekart:

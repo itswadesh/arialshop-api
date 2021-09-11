@@ -1,0 +1,4 @@
+FROM node:15-alpine
+LABEL author="Swadesh Behera"
+WORKDIR /usr/app
+# CMD [ "yarn","install", "yarn", "dev" ]

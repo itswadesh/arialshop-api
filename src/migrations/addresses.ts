@@ -1,0 +1,28 @@
+export default [
+  {
+    _id: '57c087e05c0f110799b4c939',
+    active: true,
+    address: 'K-250',
+    city: 'Mumbai',
+    country: 'India',
+    firstName: 'Ipsita',
+    lastName: 'Sahoo',
+    phone: '0000000000',
+    state: 'Maharastra',
+    uid: '57c087895c0f110799b4c82e',
+    zip: 765001,
+  },
+  {
+    _id: '57d6b6f2944efb02ba415406',
+    country: 'India',
+    firstName: 'Ipsita',
+    lastName: 'Sahoo',
+    address: 'AB/1234',
+    city: 'Mumbai',
+    zip: 769044,
+    state: 'Maharastra',
+    phone: '0000000000',
+    uid: '57c087895c0f110799b4c82e',
+    active: true,
+  },
+]

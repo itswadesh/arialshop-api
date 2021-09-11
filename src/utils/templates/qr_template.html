@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <style type="text/css">
+      html {
+        -webkit-print-color-adjust: exact;
+      }
+      body {
+        position: relative;
+        overflow: hidden;
+        padding: 0px;
+        font-size: 11px;
+        border: none;
+        width: 775px;
+        font-family: sofia;
+      }
+      .text {
+        color: rgb(31, 41, 55);
+      }
+      .container-wrapper {
+        padding: 24px;
+        background-color: white;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .barcode-wrapper {
+        width: 100%;
+        max-width: 320px;
+        border-radius: 8px;
+        border-width: 1px;
+        border-color: rgb(209, 213, 219);
+      }
+      .heading {
+        background-color: rgb(37, 128, 194);
+        color: white;
+        text-align: center;
+        height: 256px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+      .top-heading {
+        padding-top: 32px;
+        font-size: 30px;
+        line-height: 36px;
+        font-weight: 700;
+      }
+      .top-heading-2 {
+        padding-top: 40px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .qrcode-container {
+        margin-top: -96px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .qrcode-wrapper {
+        width: 192px;
+        height: 192px;
+        border-width: 1px;
+        border-radius: 6px;
+        border-color: rgb(209, 213, 219);
+        margin-top: -0.5px;
+        margin-right: -0.5px;
+      }
+      .store-details {
+        text-align: center;
+        height: 160px;
+      }
+      .vendor-name {
+        padding-top: 20px;
+        font-weight: 600;
+      }
+      .store-address {
+        margin-top: 16px;
+        color: rgb(37, 128, 194);
+      }
+      .logo-container {
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: max-content;
+      }
+      .logo-wrapper {
+        height: 64px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="text">
+      <div class="container-wrapper">
+        <div class="barcode-wrapper">
+          <div class="heading">
+            <h1 class="top-heading">Order Online!</h1>
+            <p class="top-heading-2">Scan QR to check our products</p>
+          </div>
+
+          <div class="qrcode-container">
+            <img class="qrcode-wrapper" src="{{ qrCode }}" alt="" />
+          </div>
+
+          <div class="store-details">
+            <h2 class="vendor-name">{{ storeName }}</h2>
+            <a
+              target="blank"
+              href="http://{{ storeDomain }}"
+              class="store-address"
+            >
+              {{ storeDomain }}</a
+            >
+            <div class="logo-container">
+              <img src="{{logo}}" alt="" class="logo-wrapper" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
